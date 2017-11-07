@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using System.Reflection;
 using UnityEngine.XR.iOS;
-using Wrld.Space;
+using Wrld.Space; //If you are seeing error on this line then kindly import WRLD Unity SDK to remove this error.
 
 namespace Wrld.AR.EditorScripts
 {
