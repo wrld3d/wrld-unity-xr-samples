@@ -27,7 +27,7 @@ Choose a platform from the below table to see detailed instructions for building
 Platform                                        | Unity plugins required        
 ------------------------------------------------|-------------------
 [Getting started on ARCore](#)   | [Google ARCore](https://github.com/google-ar/arcore-unity-sdk), [WRLD3D](https://www.assetstore.unity3d.com/en/#!/content/86284)
-[Getting started on ARKit](#)           | [Apple ARKit](https://bitbucket.org/Unity-Technologies/unity-arkit-plugin), [WRLD3D](https://www.assetstore.unity3d.com/en/#!/content/86284) 
+[Getting started on ARKit](#)           | [Apple ARKit](https://www.assetstore.unity3d.com/en/#!/content/92515), [WRLD3D](https://www.assetstore.unity3d.com/en/#!/content/86284) 
 
 ### WRLD API Key 
 
