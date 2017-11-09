@@ -8,7 +8,7 @@
 
 * [Support](#support)
 * [Getting Started](#getting-started)
-* [WRLD SDK Documentation](#wrld-sdk-documentation)
+* [WRLD Unity SDK Documentation](#wrld-sdk-documentation)
 * [License](#license)
 
 These sample apps showcase [WRLD Unity SDK's](http://www.wrld3d.com/) integration with ARCore and ARKit platforms to build basic AR experiences for supported Android and iOS devices.
