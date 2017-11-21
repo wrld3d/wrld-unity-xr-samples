@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GoogleARCore; // Please import Google ARCore plugin if you are seeing error here.
+using GoogleARCore; // Please import Google ARCore plugin if you are seeing a compiler error here.
 
 namespace WRLD.ARCore
 {
@@ -9,11 +9,11 @@ namespace WRLD.ARCore
 	{
 		public Transform wrldMapMask;
 
-		// Please import Google ARCore plugin if you are seeing error here.
+		// Please import Google ARCore plugin if you are seeing compiler error here.
 		private TrackedPlane m_AttachedPlane;
 		private bool m_isActive = true;
 
-		// Please import Google ARCore plugin if you are seeing error here.
+		// Please import Google ARCore plugin if you are seeing compiler error here.
 		public TrackedPlane CurrentTrackedPlane
 		{
 			set
@@ -21,10 +21,10 @@ namespace WRLD.ARCore
 				m_AttachedPlane = value;
 				if(m_AttachedPlane!=null)
 				{
-					// Please import Google ARCore plugin if you are seeing error here.
+					// Please import Google ARCore plugin if you are seeing compiler error here.
 					wrldMapMask.transform.localScale = new Vector3 (m_AttachedPlane.Bounds.x, 1f,  m_AttachedPlane.Bounds.y);
 
-					// Please import Google ARCore plugin if you are seeing error here.
+					// Please import Google ARCore plugin if you are seeing compiler error here.
 					transform.position = m_AttachedPlane.Position;
 				}
 				else
@@ -41,27 +41,27 @@ namespace WRLD.ARCore
 				return;
 			}
 
-			// Please import Google ARCore plugin if you are seeing error here.
+			// Please import Google ARCore plugin if you are seeing compiler error here.
 			while (m_AttachedPlane.SubsumedBy != null)
 			{
-				// Please import Google ARCore plugin if you are seeing error here.
+				// Please import Google ARCore plugin if you are seeing compiler error here.
 				m_AttachedPlane = m_AttachedPlane.SubsumedBy;
 			}
 
-			// Please import Google ARCore plugin if you are seeing error here.
+			// Please import Google ARCore plugin if you are seeing compiler error here.
 			if (!m_AttachedPlane.IsValid)
 			{
 				wrldMapMask.localScale = Vector3.zero;
 			}
 
-			// Please import Google ARCore plugin if you are seeing error here.
+			// Please import Google ARCore plugin if you are seeing compiler error here.
 			Vector3 difference = transform.position - m_AttachedPlane.Position;
 			wrldMapMask.transform.localPosition = new Vector3(difference.x, wrldMapMask.transform.localPosition.y, difference.z);
 
-			// Please import Google ARCore plugin if you are seeing error here.
+			// Please import Google ARCore plugin if you are seeing compiler error here.
 			wrldMapMask.transform.localScale = new Vector3 (m_AttachedPlane.Bounds.x, 1f,  m_AttachedPlane.Bounds.y);
 
-			// Please import Google ARCore plugin if you are seeing error here.
+			// Please import Google ARCore plugin if you are seeing compiler error here.
 			wrldMapMask.transform.rotation = m_AttachedPlane.Rotation;
 
 			if (!m_isActive) 

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.XR.iOS; //If you are seeing error on this line then kindly import Unity ARKit Plugin to remove this error.
+using UnityEngine.XR.iOS; // Please import Unity ARKit Plugin if you are seeing a compiler error here.
 
 public class WRLDARKitAnchorHandler : MonoBehaviour 
 {
-    //If you are seeing error on this line then kindly import Unity ARKit Plugin to remove this error.
+    // Please import Unity ARKit Plugin if you are seeing a compiler error here.
     private UnityARAnchorManager m_unityARAnchorManager;
 
     public Transform wrldMapParent;
@@ -14,7 +14,7 @@ public class WRLDARKitAnchorHandler : MonoBehaviour
 
     private WRLDARStreamingCameraHandler m_arStreamingController;
 
-    //If you are seeing error on this line then kindly import Unity ARKit Plugin to remove this error.
+    // Please import Unity ARKit Plugin if you are seeing a compiler error here.
     private Dictionary<string, ARPlaneAnchor> m_planeAnchorMap;
     private ARPlaneAnchor m_currentAnchor;
     private bool m_hasFoundAnchor = false;
@@ -23,16 +23,16 @@ public class WRLDARKitAnchorHandler : MonoBehaviour
     {
         m_arStreamingController = GameObject.FindObjectOfType<WRLDARStreamingCameraHandler> ();
 
-        //If you are seeing error on this line then kindly import Unity ARKit Plugin to remove this error.
+        // Please import Unity ARKit Plugin if you are seeing a compiler error here.
         m_planeAnchorMap = new Dictionary<string, ARPlaneAnchor> ();
 
-        //If you are seeing error on this line then kindly import Unity ARKit Plugin to remove this error.
+        // Please import Unity ARKit Plugin if you are seeing a compiler error here.
         UnityARSessionNativeInterface.ARAnchorAddedEvent += AddAnchor;
         UnityARSessionNativeInterface.ARAnchorUpdatedEvent += UpdateAnchor;
         UnityARSessionNativeInterface.ARAnchorRemovedEvent += RemoveAnchor;
     }
 
-    //If you are seeing error on this line then kindly import Unity ARKit Plugin to remove this error.
+    // Please import Unity ARKit Plugin if you are seeing a compiler error here.
     public void AddAnchor(ARPlaneAnchor arPlaneAnchor)
     {
         m_planeAnchorMap.Add (arPlaneAnchor.identifier, arPlaneAnchor);
@@ -46,7 +46,7 @@ public class WRLDARKitAnchorHandler : MonoBehaviour
         }
     }
 
-    //If you are seeing error on this line then kindly import Unity ARKit Plugin to remove this error.
+    // Please import Unity ARKit Plugin if you are seeing a compiler error here.
     public void RemoveAnchor(ARPlaneAnchor arPlaneAnchor)
     {
         if (m_planeAnchorMap.ContainsKey (arPlaneAnchor.identifier)) 
@@ -68,7 +68,7 @@ public class WRLDARKitAnchorHandler : MonoBehaviour
         }
     }
 
-    //If you are seeing error on this line then kindly import Unity ARKit Plugin to remove this error.
+    // Please import Unity ARKit Plugin if you are seeing a compiler error here.
     public void UpdateAnchor(ARPlaneAnchor arPlaneAnchor)
     {
         if (m_planeAnchorMap.ContainsKey (arPlaneAnchor.identifier)) 
@@ -83,14 +83,14 @@ public class WRLDARKitAnchorHandler : MonoBehaviour
         }
     }
 
-    //If you are seeing error on this line then kindly import Unity ARKit Plugin to remove this error.
+    // Please import Unity ARKit Plugin if you are seeing a compiler error here.
     void UpdateMapPositionWithAnchor(ARPlaneAnchor arPlaneAnchor)
     {
         //Setting the position of our map to match the position of anchor
         wrldMapParent.position = UnityARMatrixOps.GetPosition (arPlaneAnchor.transform);
     }
 
-    //If you are seeing error on this line then kindly import Unity ARKit Plugin to remove this error.
+    // Please import Unity ARKit Plugin if you are seeing a compiler error here.
     void UpdateMapMaskWithAnchor(ARPlaneAnchor arPlaneAnchor)
     {
         //Setting the position of our map to match the position of anchor

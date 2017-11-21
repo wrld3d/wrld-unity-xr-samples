@@ -2,8 +2,8 @@
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using System.Reflection;
-using UnityEngine.XR.iOS;
-using Wrld.Space; //If you are seeing error on this line then kindly import WRLD Unity SDK to remove this error.
+using UnityEngine.XR.iOS; // Please import Unity ARKit Plugin if you are seeing a compiler error here.
+using Wrld.Space; // Please import WRLD Unity SDK if you are seeing a compiler error here.
 
 namespace Wrld.AR.EditorScripts
 {
