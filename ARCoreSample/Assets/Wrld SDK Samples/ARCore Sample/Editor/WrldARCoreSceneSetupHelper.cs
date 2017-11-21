@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using System.Reflection;
 
-using GoogleARCore; // Please import Google ARCore plugin if you are seeing compiler error here.
+using GoogleARCore; // Please import Google ARCore plugin if you are seeing a compiler error here.
 using Wrld.Space; // Please import WRLD3D plugin if you are seeing a compiler error here.
 
 namespace WRLD.ARCore.Editor
@@ -58,7 +58,7 @@ namespace WRLD.ARCore.Editor
 
 		private static void SetupWRLDMap(WRLDARCoreSetupHelper wrldARCoreSetupHelper)
 		{
-			// Please import WRLD3D plugin if you are seeing error here.
+			// Please import WRLD3D plugin if you are seeing a compiler error here.
 			WrldMap wrldMap = wrldARCoreSetupHelper.wrldMapGameObject.AddComponent<WrldMap> ();
 			SerializedObject serializedWrldMapObject = new UnityEditor.SerializedObject(wrldMap);
 			SerializedProperty streamingCameraProperty = serializedWrldMapObject.FindProperty("m_streamingCamera");
@@ -80,7 +80,7 @@ namespace WRLD.ARCore.Editor
 			WRLDARCoreSetupHelper.CubeInfo[] cubes;
 			foreach (WRLDARCoreSetupHelper.CubeInfo cubeInfo in wrldARCoreSetupHelper.cubeInfos) 
 			{
-				// Please import WRLD3D plugin if you are seeing error here.
+				// Please import WRLD3D plugin if you are seeing a compiler error here.
 				GeographicTransform geographicTransform = cubeInfo.cubeGameObject.AddComponent<GeographicTransform> ();
 				SerializedObject serializedObject = new UnityEditor.SerializedObject(geographicTransform);
 				SerializedProperty latitudeProperty = serializedObject.FindProperty("InitialLatitude");
@@ -96,7 +96,7 @@ namespace WRLD.ARCore.Editor
 		private static void SetupARCoreSessionComponent(WRLDARCoreSetupHelper wrldARCoreSetupHelper)
 		{
 
-			// Please import Google ARCore plugin if you are seeing error here.
+			// Please import Google ARCore plugin if you are seeing a compiler error here.
 			SessionComponent sessionComponent = wrldARCoreSetupHelper.arCoreDeviceGameObject.AddComponent<SessionComponent> ();
 
 			SerializedObject serializedSessionComponentObject = new UnityEditor.SerializedObject(sessionComponent);
@@ -110,7 +110,7 @@ namespace WRLD.ARCore.Editor
 			{
 				string path = AssetDatabase.GUIDToAssetPath (guids [0]);
 
-				// Please import Google ARCore plugin if you are seeing error here.
+				// Please import Google ARCore plugin if you are seeing a compiler error here.
 				sessionConfigProperty.objectReferenceValue = AssetDatabase.LoadAssetAtPath<SessionConfig>(path);
 			}
 			else 

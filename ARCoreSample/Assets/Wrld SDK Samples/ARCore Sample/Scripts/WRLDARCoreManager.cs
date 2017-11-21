@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using GoogleARCore; // Please import Google ARCore plugin if you are seeing compiler error here.
+using GoogleARCore; // Please import Google ARCore plugin if you are seeing a compiler error here.
 
 namespace WRLD.ARCore
 {
@@ -10,10 +10,10 @@ namespace WRLD.ARCore
 		public Transform wrldMap;
 		public Transform wrldMapMask;
 
-		// Please import Google ARCore plugin if you are seeing compiler error here.
+		// Please import Google ARCore plugin if you are seeing a compiler error here.
 		private TrackedPlane m_trackedPlane;
 
-		// Please import Google ARCore plugin if you are seeing compiler error here.
+		// Please import Google ARCore plugin if you are seeing a compiler error here.
 		private List<TrackedPlane> m_allPlanes = new List<TrackedPlane>();
 
 		private WRLDARCorePositioner m_wrldMapARCorePositioner;
@@ -26,7 +26,7 @@ namespace WRLD.ARCore
 		public void Update ()
 		{
 
-			// Please import Google ARCore plugin if you are seeing compiler error here.
+			// Please import Google ARCore plugin if you are seeing a compiler error here.
 			if (Frame.TrackingState != FrameTrackingState.Tracking)
 			{
 				const int LOST_TRACKING_SLEEP_TIMEOUT = 15;
@@ -35,14 +35,14 @@ namespace WRLD.ARCore
 			}
 			Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-			// Please import Google ARCore plugin if you are seeing compiler error here.
+			// Please import Google ARCore plugin if you are seeing a compiler error here.
 			Frame.GetAllPlanes(ref m_allPlanes);
 
-			// Please import Google ARCore plugin if you are seeing compiler error here.
+			// Please import Google ARCore plugin if you are seeing a compiler error here.
 			TrackedPlane firstValidPlane = null;
 			for (int i = 0; i < m_allPlanes.Count; i++)
 			{
-				// Please import Google ARCore plugin if you are seeing compiler error here.
+				// Please import Google ARCore plugin if you are seeing a compiler error here.
 				if (m_allPlanes[i].IsValid)
 				{
 					firstValidPlane = m_allPlanes [i];
