@@ -27,23 +27,24 @@ namespace WRLD.ARCore
 		{
 
 			// Please import Google ARCore plugin if you are seeing a compiler error here.
-			if (Frame.TrackingState != FrameTrackingState.Tracking)
+			if (Session.Status != SessionStatus.Tracking)
 			{
 				const int LOST_TRACKING_SLEEP_TIMEOUT = 15;
 				Screen.sleepTimeout = LOST_TRACKING_SLEEP_TIMEOUT;
 				return;
 			}
+
 			Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-			// Please import Google ARCore plugin if you are seeing a compiler error here.
-			Frame.GetAllPlanes(ref m_allPlanes);
+            // Please import Google ARCore plugin if you are seeing a compiler error here.
+            Session.GetTrackables(m_allPlanes);
 
 			// Please import Google ARCore plugin if you are seeing a compiler error here.
 			TrackedPlane firstValidPlane = null;
 			for (int i = 0; i < m_allPlanes.Count; i++)
 			{
 				// Please import Google ARCore plugin if you are seeing a compiler error here.
-				if (m_allPlanes[i].IsValid)
+				if (m_allPlanes[i].TrackingState == TrackingState.Tracking)
 				{
 					firstValidPlane = m_allPlanes [i];
 					break;

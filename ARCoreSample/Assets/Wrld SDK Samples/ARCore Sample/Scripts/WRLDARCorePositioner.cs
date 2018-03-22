@@ -22,10 +22,10 @@ namespace WRLD.ARCore
 				if(m_AttachedPlane!=null)
 				{
 					// Please import Google ARCore plugin if you are seeing a compiler error here.
-					wrldMapMask.transform.localScale = new Vector3 (m_AttachedPlane.Bounds.x, 1f,  m_AttachedPlane.Bounds.y);
+					wrldMapMask.localScale = new Vector3(m_AttachedPlane.ExtentX, 1f, m_AttachedPlane.ExtentZ);
 
 					// Please import Google ARCore plugin if you are seeing a compiler error here.
-					transform.position = m_AttachedPlane.Position;
+					transform.position = m_AttachedPlane.CenterPose.position;
 				}
 				else
 				{
@@ -49,27 +49,27 @@ namespace WRLD.ARCore
 			}
 
 			// Please import Google ARCore plugin if you are seeing a compiler error here.
-			if (!m_AttachedPlane.IsValid)
+			if (m_AttachedPlane.TrackingState != TrackingState.Tracking)
 			{
 				wrldMapMask.localScale = Vector3.zero;
 			}
 
 			// Please import Google ARCore plugin if you are seeing a compiler error here.
-			Vector3 difference = transform.position - m_AttachedPlane.Position;
-			wrldMapMask.transform.localPosition = new Vector3(difference.x, wrldMapMask.transform.localPosition.y, difference.z);
+			Vector3 difference = transform.position - m_AttachedPlane.CenterPose.position;
+			wrldMapMask.transform.localPosition = new Vector3(difference.x, wrldMapMask.localPosition.y, difference.z);
 
 			// Please import Google ARCore plugin if you are seeing a compiler error here.
-			wrldMapMask.transform.localScale = new Vector3 (m_AttachedPlane.Bounds.x, 1f,  m_AttachedPlane.Bounds.y);
+			wrldMapMask.transform.localScale = new Vector3(m_AttachedPlane.ExtentX, 1f, m_AttachedPlane.ExtentZ);
 
 			// Please import Google ARCore plugin if you are seeing a compiler error here.
-			wrldMapMask.transform.rotation = m_AttachedPlane.Rotation;
+			wrldMapMask.transform.rotation = m_AttachedPlane.CenterPose.rotation;
 
 			if (!m_isActive) 
 			{
 				wrldMapMask.transform.localScale = Vector3.zero;
 			}
 
-			if ((Input.touches.Length > 0 && Input.touches [0].phase == TouchPhase.Began)) 
+			if ((Input.touches.Length > 0 && Input.touches[0].phase == TouchPhase.Began))
 			{
 				m_isActive = !m_isActive;
 			}

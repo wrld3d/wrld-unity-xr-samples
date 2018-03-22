@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class RotateObject : MonoBehaviour 
+public class RotateObjectAR : MonoBehaviour 
 {
     const float RotationSpeed = 180f;
     

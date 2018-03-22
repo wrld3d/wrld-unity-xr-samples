@@ -49,7 +49,6 @@ namespace WRLD.ARCore.Editor
 
 			SetupWRLDMap (wrldARCoreSetupHelper);
 			SetupGeographicsTransforms (wrldARCoreSetupHelper);
-			SetupARCoreSessionComponent (wrldARCoreSetupHelper);
 			SetupWRLDARCoreManager (wrldARCoreSetupHelper);
 			SetupWRLDARMapPositioner (wrldARCoreSetupHelper);
 
@@ -91,34 +90,6 @@ namespace WRLD.ARCore.Editor
 
 				serializedObject.ApplyModifiedProperties ();
 			}
-		}
-
-		private static void SetupARCoreSessionComponent(WRLDARCoreSetupHelper wrldARCoreSetupHelper)
-		{
-
-			// Please import Google ARCore plugin if you are seeing a compiler error here.
-			SessionComponent sessionComponent = wrldARCoreSetupHelper.arCoreDeviceGameObject.AddComponent<SessionComponent> ();
-
-			SerializedObject serializedSessionComponentObject = new UnityEditor.SerializedObject(sessionComponent);
-
-			SerializedProperty firstPersonCameraProperty = serializedSessionComponentObject.FindProperty("m_firstPersonCamera");
-			SerializedProperty sessionConfigProperty = serializedSessionComponentObject.FindProperty("m_arSessionConfig");
-
-			firstPersonCameraProperty.objectReferenceValue = wrldARCoreSetupHelper.mainCamera;
-			string[] guids = AssetDatabase.FindAssets ("DefaultSessionConfig");
-			if (guids != null && guids.Length > 0) 
-			{
-				string path = AssetDatabase.GUIDToAssetPath (guids [0]);
-
-				// Please import Google ARCore plugin if you are seeing a compiler error here.
-				sessionConfigProperty.objectReferenceValue = AssetDatabase.LoadAssetAtPath<SessionConfig>(path);
-			}
-			else 
-			{
-				Debug.LogError ("DefaultSessionConfig.asset not found. Have you loaded ARCoreDependency package.");
-			}
-
-			serializedSessionComponentObject.ApplyModifiedProperties ();
 		}
 
 		private static void SetupWRLDARCoreManager(WRLDARCoreSetupHelper wrldARCoreSetupHelper)
