@@ -11,7 +11,7 @@
 * [WRLD Unity SDK Documentation](#wrld-sdk-documentation)
 * [License](#license)
 
-These sample apps showcase [WRLD Unity SDK's](http://www.wrld3d.com/) integration with ARCore and ARKit platforms to build basic AR experiences for supported Android and iOS devices.
+These sample apps showcase [WRLD Unity SDK's](https://wrld3d.com/unity/latest/docs/api/) integration with ARCore and ARKit platforms to build basic AR experiences for supported Android and iOS devices.
 
 ## Support
 
@@ -25,12 +25,12 @@ Choose a platform from the table below to see detailed instructions for building
 
 Platform                                        | Unity plugins required        
 ------------------------------------------------|-------------------
-[Getting started on ARCore](#)   | [Google ARCore](https://github.com/google-ar/arcore-unity-sdk), [WRLD Unity SDK](https://www.assetstore.unity3d.com/en/#!/content/86284)
-[Getting started on ARKit](#)           | [Apple ARKit](https://www.assetstore.unity3d.com/en/#!/content/92515), [WRLD Unity SDK](https://www.assetstore.unity3d.com/en/#!/content/86284) 
+[Getting started on ARCore](https://wrld3d.com/unity/latest/docs/examples/device-deployment-arcore/)   | [Google ARCore](https://github.com/google-ar/arcore-unity-sdk), [WRLD Unity SDK](https://www.assetstore.unity3d.com/en/#!/content/86284)
+[Getting started on ARKit](https://wrld3d.com/unity/latest/docs/examples/device-deployment-arkit/)           | [Apple ARKit](https://www.assetstore.unity3d.com/en/#!/content/92515), [WRLD Unity SDK](https://www.assetstore.unity3d.com/en/#!/content/86284) 
 
 ## WRLD Unity SDK Documentation
 
-See the [WRLD Unity SDK API reference](https://wrld3d.com/unity/latest/docs/api/) for documentation on the individual WRLD Unity SDK.
+See the [WRLD Unity SDK API reference](https://wrld3d.com/unity/latest/docs/api/) for documentation.
 
 ## License
 
