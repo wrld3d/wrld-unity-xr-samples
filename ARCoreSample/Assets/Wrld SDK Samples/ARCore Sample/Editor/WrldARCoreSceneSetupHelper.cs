@@ -12,6 +12,21 @@ namespace WRLD.ARCore.Editor
 	[CustomEditor(typeof(WRLDARCoreSetupHelper))]
 	public class WRLDARCoreSceneSetupHelper : UnityEditor.Editor 
 	{
+		private static bool m_editorEventsSubscribed = false;
+
+		static WRLDARCoreSceneSetupHelper()
+		{
+			if (!m_editorEventsSubscribed) 
+			{
+				EditorSceneManager.sceneOpened += OnEditorSceneOpened;
+				m_editorEventsSubscribed = true;
+			}
+		}
+
+		static void OnEditorSceneOpened (UnityEngine.SceneManagement.Scene scene, OpenSceneMode mode)
+		{
+			CheckSceneStatus ();
+		}
 
 		public override void OnInspectorGUI()
 		{
