@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.72773993, g: 0.8360174, b: 0.8698243, a: 1}
+  m_IndirectSpecularColor: {r: 0.72773963, g: 0.83601695, b: 0.8698233, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -223,7 +223,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 203257220}
-  - component: {fileID: 203257221}
   m_Layer: 0
   m_Name: Rotating Red Cube
   m_TagString: Untagged
@@ -246,22 +245,6 @@ Transform:
   m_Father: {fileID: 931583101}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &203257221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114882142911359602, guid: 05011cd036cde458aa8c44dfb8c94244,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 203257219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a13285e89f13e48149ece267609da9d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitialLatitude: 56.458054
-  InitialLongitude: -2.977365
-  InitialHeadingInDegrees: 0
-  ApplyFlattening: 0
 --- !u!1001 &307609243
 Prefab:
   m_ObjectHideFlags: 0
@@ -646,7 +629,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1255454448}
-  - component: {fileID: 1255454449}
   m_Layer: 0
   m_Name: Rotating Blue Cube
   m_TagString: Untagged
@@ -669,22 +651,6 @@ Transform:
   m_Father: {fileID: 931583101}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1255454449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114225909195470002, guid: 05011cd036cde458aa8c44dfb8c94244,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1255454447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a13285e89f13e48149ece267609da9d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitialLatitude: 56.460857
-  InitialLongitude: -2.980352
-  InitialHeadingInDegrees: 0
-  ApplyFlattening: 0
 --- !u!1 &1320673696
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +951,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1707402641}
-  - component: {fileID: 1707402642}
   m_Layer: 0
   m_Name: Rotating Green Cube
   m_TagString: Untagged
@@ -1008,19 +973,3 @@ Transform:
   m_Father: {fileID: 931583101}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1707402642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114274108241260478, guid: 05011cd036cde458aa8c44dfb8c94244,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1707402640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a13285e89f13e48149ece267609da9d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitialLatitude: 56.460737
-  InitialLongitude: -2.974079
-  InitialHeadingInDegrees: 0
-  ApplyFlattening: 0
