@@ -11,7 +11,7 @@ public class WRLDARStreamingCameraHandler : MonoBehaviour
     private MeshRenderer m_streamingMask;
 
     [SerializeField]
-    private float m_minDistance = 700f;
+    private float m_minDistance = 500.0f;
 
     private void Start()
     {
@@ -25,12 +25,14 @@ public class WRLDARStreamingCameraHandler : MonoBehaviour
 
         float maxDistance = GetCameraDistanceRelativeToBounds (m_streamingMask.bounds, m_streamingCamera);
 
-        maxDistance = maxDistance * (1f / m_wrldMap.transform.localScale.x);
+        float minDistance = m_minDistance * m_wrldMap.transform.localScale.x;
 
-        if (maxDistance < m_minDistance) 
+        maxDistance = maxDistance * m_wrldMap.transform.localScale.x;
+
+        if (maxDistance < minDistance) 
         {
             //Never get too close to origin.
-            maxDistance = m_minDistance;
+            maxDistance = minDistance;
         }
 
         m_streamingCamera.transform.position -= m_streamingCamera.transform.forward * maxDistance;

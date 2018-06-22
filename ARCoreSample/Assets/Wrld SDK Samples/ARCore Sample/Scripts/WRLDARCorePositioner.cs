@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore; // Please import Google ARCore plugin if you are seeing a compiler error here.
+using Wrld;
 
 namespace WRLD.ARCore
 {
@@ -73,6 +74,8 @@ namespace WRLD.ARCore
 			{
 				m_isActive = !m_isActive;
 			}
+
+            Api.Instance.CameraApi.SetCustomRenderCamera(UnityEngine.Camera.main);
 		}
 
 	}
