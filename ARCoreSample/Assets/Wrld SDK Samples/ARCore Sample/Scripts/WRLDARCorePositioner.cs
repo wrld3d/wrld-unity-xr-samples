@@ -75,8 +75,13 @@ namespace WRLD.ARCore
 				m_isActive = !m_isActive;
 			}
 
-            Api.Instance.CameraApi.SetCustomRenderCamera(UnityEngine.Camera.main);
+            
 		}
 
-	}
+        public void LateUpdate()
+        {
+            Api.Instance.CameraApi.SetCustomRenderCamera(UnityEngine.Camera.main);
+        }
+
+    }
 }
