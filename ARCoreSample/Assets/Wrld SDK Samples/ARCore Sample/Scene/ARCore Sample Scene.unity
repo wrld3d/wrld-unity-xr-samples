@@ -465,8 +465,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1047179427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0.5, z: 0}
   m_Children:
   - {fileID: 716813032}
   m_Father: {fileID: 1694276850}
@@ -606,7 +606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_wrldMap: {fileID: 775670657}
   m_streamingMask: {fileID: 716813033}
-  m_minDistance: 700
+  m_minDistance: 2
 --- !u!4 &1149017005
 Transform:
   m_ObjectHideFlags: 0

@@ -25,8 +25,6 @@ public class WRLDARStreamingCameraHandler : MonoBehaviour
 
         float maxDistance = GetCameraDistanceRelativeToBounds (m_streamingMask.bounds, m_streamingCamera);
 
-        maxDistance = maxDistance * (1f / m_wrldMap.transform.localScale.x);
-
         if (maxDistance < m_minDistance) 
         {
             //Never get too close to origin.
