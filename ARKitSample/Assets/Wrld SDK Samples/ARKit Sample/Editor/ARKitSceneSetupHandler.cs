@@ -84,12 +84,14 @@ namespace Wrld.AR.EditorScripts
                 SerializedProperty streamingCameraProperty = serializedWrldMapObject.FindProperty("m_streamingCamera");
                 SerializedProperty latitudeDegreesProperty = serializedWrldMapObject.FindProperty("m_latitudeDegrees");
                 SerializedProperty longitudeDegreesProperty = serializedWrldMapObject.FindProperty("m_longitudeDegrees");
-                SerializedProperty materialDirectoryProperty = serializedWrldMapObject.FindProperty("m_materialDirectory");
+				SerializedProperty materialDirectoryProperty = serializedWrldMapObject.FindProperty("m_materialDirectory");
+				SerializedProperty useBuiltInCameraControlsProperty = serializedWrldMapObject.FindProperty("m_useBuiltInCameraControls");
 
                 streamingCameraProperty.objectReferenceValue = streamingCamera;
                 latitudeDegreesProperty.doubleValue = latitudeDegrees;
                 longitudeDegreesProperty.doubleValue = longitudeDegrees;
-                materialDirectoryProperty.stringValue = materialDirectory;
+				materialDirectoryProperty.stringValue = materialDirectory;
+				useBuiltInCameraControlsProperty.boolValue = false;
 
                 serializedWrldMapObject.ApplyModifiedProperties ();
             }

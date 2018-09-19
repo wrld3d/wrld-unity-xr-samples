@@ -12,6 +12,7 @@ namespace WRLD.ARCore
 		// Please import Google ARCore plugin if you are seeing a compiler error here.
 		private TrackedPlane m_AttachedPlane;
 		private bool m_isActive = true;
+        private WRLDARStreamingCameraHandler m_streamingCameraHander;
 
 		// Please import Google ARCore plugin if you are seeing a compiler error here.
 		public TrackedPlane CurrentTrackedPlane
@@ -22,7 +23,7 @@ namespace WRLD.ARCore
 				if(m_AttachedPlane!=null)
 				{
 					// Please import Google ARCore plugin if you are seeing a compiler error here.
-					wrldMapMask.localScale = new Vector3(m_AttachedPlane.ExtentX, 1f, m_AttachedPlane.ExtentZ);
+                    wrldMapMask.localScale = new Vector3(m_AttachedPlane.ExtentX, wrldMapMask.localScale.y, m_AttachedPlane.ExtentZ);
 
 					// Please import Google ARCore plugin if you are seeing a compiler error here.
 					transform.position = m_AttachedPlane.CenterPose.position;
@@ -33,6 +34,11 @@ namespace WRLD.ARCore
 				}	
 			}
 		}
+
+        public void Start()
+        {
+            m_streamingCameraHander = GameObject.FindObjectOfType<WRLDARStreamingCameraHandler> ();
+        }
 
 		public void Update()
 		{
@@ -55,8 +61,7 @@ namespace WRLD.ARCore
 			}
 
 			// Please import Google ARCore plugin if you are seeing a compiler error here.
-			Vector3 difference = transform.position - m_AttachedPlane.CenterPose.position;
-			wrldMapMask.transform.localPosition = new Vector3(difference.x, wrldMapMask.localPosition.y, difference.z);
+			transform.position = m_AttachedPlane.CenterPose.position;
 
 			// Please import Google ARCore plugin if you are seeing a compiler error here.
 			wrldMapMask.transform.localScale = new Vector3(m_AttachedPlane.ExtentX, 1f, m_AttachedPlane.ExtentZ);
@@ -73,6 +78,8 @@ namespace WRLD.ARCore
 			{
 				m_isActive = !m_isActive;
 			}
+
+            m_streamingCameraHander.UpdateStreamingCamera ();
 		}
 
 	}

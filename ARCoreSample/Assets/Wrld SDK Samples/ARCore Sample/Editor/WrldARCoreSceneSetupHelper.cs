@@ -79,11 +79,13 @@ namespace WRLD.ARCore.Editor
 			SerializedProperty latitudeDegreesProperty = serializedWrldMapObject.FindProperty("m_latitudeDegrees");
 			SerializedProperty longitudeDegreesProperty = serializedWrldMapObject.FindProperty("m_longitudeDegrees");
 			SerializedProperty materialDirectoryProperty = serializedWrldMapObject.FindProperty("m_materialDirectory");
+            SerializedProperty useBuiltInCameraControlsProperty = serializedWrldMapObject.FindProperty("m_useBuiltInCameraControls");
 
 			streamingCameraProperty.objectReferenceValue = wrldARCoreSetupHelper.streamingCamera;
 			latitudeDegreesProperty.doubleValue = wrldARCoreSetupHelper.wrldStartLatitudeDegrees;
 			longitudeDegreesProperty.doubleValue = wrldARCoreSetupHelper.wrldStartLongitudeDegrees;
 			materialDirectoryProperty.stringValue = wrldARCoreSetupHelper.wrldMaterialDirectory;
+            useBuiltInCameraControlsProperty.boolValue = false;
 
 			serializedWrldMapObject.ApplyModifiedProperties ();
 		}
