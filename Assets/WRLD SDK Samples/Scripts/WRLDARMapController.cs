@@ -98,15 +98,11 @@ public class WRLDARMapController : MonoBehaviour
         m_currentARPlane = null;
     }
 
-    void SetWrldMapPosition() {
-        m_wrldMapMask.parent.position = m_currentARPlane.transform.position;
-    }
-
     void OnCurrentPlaneBoundaryChanged(ARPlaneBoundaryChangedEventArgs args) {
         if (m_currentARPlane != null) {
-            m_wrldMapMask.localPosition = new Vector3(m_currentARPlane.center.x, m_wrldMapMask.localPosition.y, m_currentARPlane.center.z);
+            m_wrldMapMask.parent.position = m_currentARPlane.transform.position;
             m_wrldMapMask.rotation = m_currentARPlane.transform.rotation;
-            m_wrldMapMask.localScale = new Vector3(m_currentARPlane.size.x, 0.1f, m_currentARPlane.size.y);
+            m_wrldMapMask.localScale = new Vector3(m_currentARPlane.size.x, 1f, m_currentARPlane.size.y);
             m_streamingCameraHandler.UpdateStreamingCamera();
         }
     }
