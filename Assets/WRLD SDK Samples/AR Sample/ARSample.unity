@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_wrldMapMask: {fileID: 1047179428}
-  m_streamingCameraHandler: {fileID: 0}
+  m_streamingCameraHandler: {fileID: 1149017002}
 --- !u!1 &268801128
 GameObject:
   m_ObjectHideFlags: 0
