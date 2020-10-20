@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/WRLD SDK Samples/AR Sample/ARSample.unity
     guid: 9f6fc25bade274da8a282084d9122b86
   - enabled: 0
