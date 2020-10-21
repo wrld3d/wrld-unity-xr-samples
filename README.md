@@ -16,7 +16,7 @@ This sample app showcase [WRLD Unity SDK's](https://wrld3d.com/unity/latest/docs
 
 ## Support
 
-If you have any questions, bug reports, or feature requests, feel free to submit to the [issue tracker](https://github.com/wrld3d/wrld-unity-ar-samples/issues) for this repository.
+If you have any questions, bug reports, or feature requests, feel free to submit to the [issue tracker](https://github.com/wrld3d/wrld-unity-xr-samples/issues) for this repository.
 
 ## Getting Started
 
