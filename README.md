@@ -12,7 +12,7 @@
   - [WRLD Unity SDK Documentation](#wrld-unity-sdk-documentation)
   - [License](#license)
 
-This sample app showcase [WRLD Unity SDK's](https://wrld3d.com/unity/latest/docs/api/) integration with Unity's AR Foundation and XR Management plugins to build basic XR experiences for supported devices.
+This sample app showcases [WRLD Unity SDK's](https://wrld3d.com/unity/latest/docs/api/) integration with Unity's AR Foundation and XR Management plugins to build basic XR experiences for supported devices.
 
 ## Support
 
@@ -20,12 +20,9 @@ If you have any questions, bug reports, or feature requests, feel free to submit
 
 ## Getting Started
 
-This sample app demonstrate the use of the WRLD's Unity SDK that allows developers to create XR experiences for supported devices.
+This sample app demonstrates the use of the WRLD's Unity SDK that allows developers to create XR experiences for supported devices.
 
-Choose a platform below to see detailed instructions for building each app.
-
-* [Getting started on AR](https://wrld3d.com/unity/latest/docs/examples/device-deployment-ar/)
-* [Getting started on VR](https://wrld3d.com/unity/latest/docs/examples/device-deployment-vr/)
+See our [XR Deployment](https://wrld3d.com/unity/latest/docs/examples/device-deployment-xr/) page for detailed instructions for building the apps.
 
 ## WRLD Unity SDK Documentation
 
