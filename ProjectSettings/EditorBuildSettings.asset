@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/WRLD SDK Samples/AR Sample/ARSample.unity
+    guid: 9f6fc25bade274da8a282084d9122b86
+  - enabled: 0
+    path: Assets/WRLD SDK Samples/VR Sample/VRSample.unity
+    guid: 5f1f56774c2adc445a358fa09a6a433e
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 31d072571492548a28f8c80ead2a382d,
+      type: 2}
+    com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: 6c5c91b2f84fd472f81548a0b5a36e88,
+      type: 2}
+    com.unity.xr.arkit.PlayerSettings: {fileID: 11400000, guid: cb79038e75f2d4d4b89b3e1afab1fa35,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a8d8eb8e63634437c8454cbfb9348716,
+      type: 2}
