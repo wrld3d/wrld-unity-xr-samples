@@ -5,20 +5,61 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 [RequireComponent(typeof(ARPlaneManager))]
+[RequireComponent(typeof(ARRaycastManager))]
 public class WRLDARMapController : MonoBehaviour
 {
     #pragma warning disable 0649
     [SerializeField] private Transform m_wrldMapMask;
     [SerializeField] private WRLDARStreamingCameraHandler m_streamingCameraHandler;
+    [SerializeField] private GameObject[] m_SurfaceStateMsg;
     #pragma warning restore 0649
 
     private ARPlaneManager m_arPlaneManager;
+    private ARRaycastManager m_RaycastManager;
     private ARPlane m_currentARPlane = null;
     private Dictionary<TrackableId, ARPlane> m_detectedPlanes;
+    private List<ARRaycastHit> m_hits = new List<ARRaycastHit>();
+    private bool m_isSurfaceSelected = false;
+    private bool m_isSurfaceDetected = false;
+    private enum SurfaceState { NotDetect, Detected, Selected};
 
     void Awake() {
         m_detectedPlanes = new Dictionary<TrackableId, ARPlane>();
         m_arPlaneManager = gameObject.GetComponent<ARPlaneManager>();
+        m_RaycastManager = GetComponent<ARRaycastManager>();
+    }
+
+    bool TryGetTouchPosition(out Vector2 touchPosition)
+    {
+            if (Input.touchCount > 0)
+            {
+                touchPosition = Input.GetTouch(0).position;
+                return true;
+            }
+        touchPosition = default;
+        return false;
+    }
+
+    void Update()
+    {
+        if (!m_isSurfaceSelected) {
+            if (!TryGetTouchPosition(out Vector2 touchPosition))
+                return;
+
+            if (m_RaycastManager.Raycast(touchPosition, m_hits, TrackableType.PlaneWithinPolygon))
+            {
+                foreach (var plane in m_detectedPlanes.Values)
+                {
+                    if (plane.trackableId == m_hits[0].trackableId)
+                    {
+                        m_isSurfaceSelected = true;
+                        UpdateSurfaceStateMsg(SurfaceState.Selected);
+                        CheckAndSetCurrentPlane(plane);
+                        DisableDetectedPlaneVisuals(plane.trackableId);
+                    }
+                }
+            }
+        }
     }
 
     void OnEnable()
@@ -35,6 +76,11 @@ public class WRLDARMapController : MonoBehaviour
             foreach (var addedPlane in args.added) {
                 if (addedPlane.alignment == UnityEngine.XR.ARSubsystems.PlaneAlignment.HorizontalUp) {
                     AddPlane(addedPlane);
+                    if (!m_isSurfaceDetected)
+                    {
+                        m_isSurfaceDetected = true;
+                        UpdateSurfaceStateMsg(SurfaceState.Detected);
+                    }
                 }
             }
         }
@@ -53,13 +99,6 @@ public class WRLDARMapController : MonoBehaviour
                     AddPlane(GetTopMostPlane(plane));
                 }
             }
-
-            // Use one of the detected planes to show map on. Should probably move 
-            // to tapping a plane but replicating old functionality right now.
-            var enumerator = m_detectedPlanes.GetEnumerator();
-            enumerator.MoveNext();
-            var planeToUse = enumerator.Current.Value;
-            CheckAndSetCurrentPlane(planeToUse);
         }
     }
 
@@ -104,6 +143,44 @@ public class WRLDARMapController : MonoBehaviour
             m_wrldMapMask.rotation = m_currentARPlane.transform.rotation;
             m_wrldMapMask.localScale = new Vector3(m_currentARPlane.size.x, 1f, m_currentARPlane.size.y);
             m_streamingCameraHandler.UpdateStreamingCamera();
+        }
+    }
+
+    private void DisableDetectedPlaneVisuals(TrackableId selectedPlaneID)
+    {
+        foreach (var plane in m_arPlaneManager.trackables)
+        {
+            if (plane.trackableId == selectedPlaneID)
+            {
+                plane.gameObject.GetComponent<ARPlaneMeshVisualizer>().enabled = false;
+                plane.gameObject.GetComponent<MeshCollider>().enabled = false;
+                plane.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                plane.gameObject.GetComponent<LineRenderer>().enabled = false;
+            }
+            else
+            {
+                plane.gameObject.SetActive(false);
+            }
+        }
+        m_arPlaneManager.planePrefab.GetComponent<ARPlaneMeshVisualizer>().enabled = false;
+        m_arPlaneManager.planePrefab.GetComponent<MeshCollider>().enabled = false;
+        m_arPlaneManager.planePrefab.GetComponent<MeshRenderer>().enabled = false;
+        m_arPlaneManager.planePrefab.GetComponent<LineRenderer>().enabled = false;
+    }
+
+    private void UpdateSurfaceStateMsg(SurfaceState surfaceState)
+    {
+        switch (surfaceState)
+        {
+            case SurfaceState.Detected:
+                m_SurfaceStateMsg[0].SetActive(false);
+                m_SurfaceStateMsg[1].SetActive(true);
+                break;
+            case SurfaceState.Selected:
+                m_SurfaceStateMsg[1].SetActive(false);
+                break;
+            default:
+                break;
         }
     }
 }
