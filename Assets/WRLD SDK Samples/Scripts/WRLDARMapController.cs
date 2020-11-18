@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(ARPlaneManager))]
 [RequireComponent(typeof(ARRaycastManager))]
@@ -11,31 +12,32 @@ public class WRLDARMapController : MonoBehaviour
     #pragma warning disable 0649
     [SerializeField] private Transform m_wrldMapMask;
     [SerializeField] private WRLDARStreamingCameraHandler m_streamingCameraHandler;
-    [SerializeField] private GameObject[] m_SurfaceStateMsg;
+    [SerializeField] private GameObject m_surfaceStateMsg;
     #pragma warning restore 0649
 
     private ARPlaneManager m_arPlaneManager;
-    private ARRaycastManager m_RaycastManager;
+    private ARRaycastManager m_raycastManager;
     private ARPlane m_currentARPlane = null;
     private Dictionary<TrackableId, ARPlane> m_detectedPlanes;
     private List<ARRaycastHit> m_hits = new List<ARRaycastHit>();
     private bool m_isSurfaceSelected = false;
     private bool m_isSurfaceDetected = false;
-    private enum SurfaceState { NotDetect, Detected, Selected};
+    private enum SurfaceState {Detected, Selected};
 
     void Awake() {
         m_detectedPlanes = new Dictionary<TrackableId, ARPlane>();
         m_arPlaneManager = gameObject.GetComponent<ARPlaneManager>();
-        m_RaycastManager = GetComponent<ARRaycastManager>();
+        m_raycastManager = GetComponent<ARRaycastManager>();
+        m_arPlaneManager.planePrefab.GetComponent<LineRenderer>().startColor = new Color(0, 113, 188, 1);
     }
 
     bool TryGetTouchPosition(out Vector2 touchPosition)
     {
-            if (Input.touchCount > 0)
-            {
-                touchPosition = Input.GetTouch(0).position;
-                return true;
-            }
+        if (Input.touchCount > 0)
+        {
+            touchPosition = Input.GetTouch(0).position;
+            return true;
+        }
         touchPosition = default;
         return false;
     }
@@ -46,7 +48,7 @@ public class WRLDARMapController : MonoBehaviour
             if (!TryGetTouchPosition(out Vector2 touchPosition))
                 return;
 
-            if (m_RaycastManager.Raycast(touchPosition, m_hits, TrackableType.PlaneWithinPolygon))
+            if (m_raycastManager.Raycast(touchPosition, m_hits, TrackableType.PlaneWithinPolygon))
             {
                 foreach (var plane in m_detectedPlanes.Values)
                 {
@@ -56,6 +58,7 @@ public class WRLDARMapController : MonoBehaviour
                         UpdateSurfaceStateMsg(SurfaceState.Selected);
                         CheckAndSetCurrentPlane(plane);
                         DisableDetectedPlaneVisuals(plane.trackableId);
+                        break;
                     }
                 }
             }
@@ -152,20 +155,22 @@ public class WRLDARMapController : MonoBehaviour
         {
             if (plane.trackableId == selectedPlaneID)
             {
-                plane.gameObject.GetComponent<ARPlaneMeshVisualizer>().enabled = false;
-                plane.gameObject.GetComponent<MeshCollider>().enabled = false;
-                plane.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                plane.gameObject.GetComponent<LineRenderer>().enabled = false;
+                SetObjectComponents(plane.gameObject);
             }
             else
             {
                 plane.gameObject.SetActive(false);
             }
         }
-        m_arPlaneManager.planePrefab.GetComponent<ARPlaneMeshVisualizer>().enabled = false;
-        m_arPlaneManager.planePrefab.GetComponent<MeshCollider>().enabled = false;
-        m_arPlaneManager.planePrefab.GetComponent<MeshRenderer>().enabled = false;
-        m_arPlaneManager.planePrefab.GetComponent<LineRenderer>().enabled = false;
+        SetObjectComponents(m_arPlaneManager.planePrefab);
+    }
+
+    private void SetObjectComponents(GameObject obj)
+    {
+        obj.GetComponent<ARPlaneMeshVisualizer>().enabled = false;
+        obj.GetComponent<MeshCollider>().enabled = false;
+        obj.GetComponent<MeshRenderer>().enabled = false;
+        obj.GetComponent<LineRenderer>().enabled = false;
     }
 
     private void UpdateSurfaceStateMsg(SurfaceState surfaceState)
@@ -173,11 +178,10 @@ public class WRLDARMapController : MonoBehaviour
         switch (surfaceState)
         {
             case SurfaceState.Detected:
-                m_SurfaceStateMsg[0].SetActive(false);
-                m_SurfaceStateMsg[1].SetActive(true);
+                m_surfaceStateMsg.GetComponentInChildren<Text>().text = "Tap on any surface to select and lock surface.";
                 break;
             case SurfaceState.Selected:
-                m_SurfaceStateMsg[1].SetActive(false);
+                m_surfaceStateMsg.SetActive(false);
                 break;
             default:
                 break;
