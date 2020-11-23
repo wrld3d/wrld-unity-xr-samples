@@ -176,17 +176,17 @@ public class WRLDARMapController : MonoBehaviour
         {
             if (plane.trackableId == selectedPlaneID)
             {
-                SetObjectComponents(plane.gameObject);
+                DisableARPlaneMeshVisualizer(plane.gameObject);
             }
             else
             {
                 plane.gameObject.SetActive(false);
             }
         }
-        SetObjectComponents(m_arPlaneManager.planePrefab);
+        DisableARPlaneMeshVisualizer(m_arPlaneManager.planePrefab);
     }
 
-    private void SetObjectComponents(GameObject obj)
+    private void DisableARPlaneMeshVisualizer(GameObject obj)
     {
         obj.GetComponent<ARPlaneMeshVisualizer>().enabled = false;
         obj.GetComponent<MeshCollider>().enabled = false;
