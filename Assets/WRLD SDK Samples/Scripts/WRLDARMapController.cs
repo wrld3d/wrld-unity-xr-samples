@@ -21,6 +21,7 @@ public class WRLDARMapController : MonoBehaviour
     private List<ARRaycastHit> m_hits = new List<ARRaycastHit>();
     private enum SurfaceState {Initial, Detected, Selected };
     private SurfaceState m_surfaceState = SurfaceState.Initial;
+
     void Awake()
     {
         m_detectedPlanes = new Dictionary<TrackableId, ARPlane>();
