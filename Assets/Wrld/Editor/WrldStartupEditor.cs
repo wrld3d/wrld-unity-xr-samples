@@ -22,6 +22,8 @@ public class WrldStartupEditor : Editor
     SerializedProperty m_terrainCollisions;
     SerializedProperty m_roadCollisions;
     SerializedProperty m_buildingCollisions;
+    SerializedProperty m_coverageTreeManifestUrl;
+    SerializedProperty m_themeManifestUrl;
     SerializedProperty m_enableLabels;
     SerializedProperty m_enableIndoorEntryMarkerEvents;
     SerializedProperty m_labelCanvas;
@@ -48,6 +50,8 @@ public class WrldStartupEditor : Editor
         m_terrainCollisions = serializedObject.FindProperty("m_terrainCollisions");
         m_roadCollisions = serializedObject.FindProperty("m_roadCollisions");
         m_buildingCollisions = serializedObject.FindProperty("m_buildingCollisions");
+        m_coverageTreeManifestUrl = serializedObject.FindProperty("m_coverageTreeManifestUrl");
+        m_themeManifestUrl = serializedObject.FindProperty("m_themeManifestUrl");
         m_enableLabels = serializedObject.FindProperty("m_enableLabels");
         m_enableIndoorEntryMarkerEvents = serializedObject.FindProperty("m_enableIndoorEntryMarkerEvents");
         m_labelCanvas = serializedObject.FindProperty("m_labelCanvas");
@@ -125,6 +129,10 @@ public class WrldStartupEditor : Editor
             EditorGUILayout.PropertyField(m_materialDirectory, new GUIContent("Material Directory"));
             EditorGUILayout.PropertyField(m_indoorMapMaterialDirectory, new GUIContent("Indoor Map Material Directory"));
             EditorGUILayout.PropertyField(m_overrideLandmarkMaterial, new GUIContent("Landmark Override Material"));
+
+            EditorGUILayout.PropertyField(m_coverageTreeManifestUrl, new GUIContent("Coverage Tree Manifest URL"));
+            // Themes currently not implemented for Unity
+            //EditorGUILayout.PropertyField(m_themeManifestUrl, new GUIContent("Theme Manifest URL"));
 
             m_experimentalFeaturesDisplayed = EditorGUILayout.Foldout(m_experimentalFeaturesDisplayed, "Experimental Features");
 

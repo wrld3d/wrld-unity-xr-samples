@@ -12,8 +12,11 @@ namespace Wrld.Editor
         const string StreamingResourcesDirectory = "Assets/StreamingAssets/WrldResources";
         const string WindowsResourcesDirectory = "Assets/Wrld/AssetData/Windows/";
         const string iOSResourcesDirectory = "Assets/Wrld/AssetData/iOS/";
-        const string OSXResourcesDirectory = "Assets/Wrld/Plugins/x86_64/StreamAlpha.bundle/Contents/Resources/";
+        const string OSXResourcesDirectory = "Assets/Wrld/Plugins/OSX/StreamAlpha.bundle/Contents/Resources/";
+        const string WebGLResourcesSrcDirectory = "Assets/Wrld/AssetData/WebGL/";
+        const string WebGLResourcesDestDirectory = "Assets/Wrld/WrldResources/Resources";
         const string EmptyResourcesDirectory = "Assets/Wrld/Version/";
+        const string SourceDetailsPath = "Assets/Wrld/AssetData/sourceDetails";
         private static ActiveBuildTargetListener m_activeBuildTargetListener = new ActiveBuildTargetListener();
         private static WillPlayInEditorListener m_willPlayInEditorListener = new WillPlayInEditorListener();
         private static bool m_isSubscribedToBuildTargetChanges = false;
@@ -75,11 +78,7 @@ namespace Wrld.Editor
         static void CleanResourcesDirectory()
         {
             FileUtil.DeleteFileOrDirectory(StreamingResourcesDirectory);
-        }
-
-        static string GetSourceDetailsFilePath(string toDirectory)
-        {
-            return Path.Combine(toDirectory, "sourceDetails");
+            FileUtil.DeleteFileOrDirectory(WebGLResourcesDestDirectory);
         }
 
         static string GetCurrentSourceDetails(string sourceDetailsFile)
@@ -96,16 +95,22 @@ namespace Wrld.Editor
 
         static void UpdateAssets(string fromDirectory, string toDirectory)
         {
-            string sourceDetailsPath = GetSourceDetailsFilePath(toDirectory);
             string sourceDetails = string.Format("{0} {1:O}", fromDirectory, GetLastSourceWriteTimeUtc(fromDirectory));
 
-            if (sourceDetails != GetCurrentSourceDetails(sourceDetailsPath))
+            if (sourceDetails != GetCurrentSourceDetails(SourceDetailsPath))
             {
-                AssetDatabase.StartAssetEditing();
-                CleanResourcesDirectory();
-                CopyDirectoryRecursive(fromDirectory, toDirectory);
-                File.WriteAllText(sourceDetailsPath, sourceDetails);
-                AssetDatabase.StopAssetEditing();
+                try
+                {
+                    AssetDatabase.StartAssetEditing();
+                    CleanResourcesDirectory();
+                    CopyDirectoryRecursive(fromDirectory, toDirectory);
+                    File.WriteAllText(SourceDetailsPath, sourceDetails);
+                }
+                finally
+                {
+                    AssetDatabase.StopAssetEditing();
+                    AssetDatabase.Refresh();
+                }
             }
         }
 
@@ -166,6 +171,12 @@ namespace Wrld.Editor
             UpdateAssets(WindowsResourcesDirectory, StreamingResourcesDirectory + "/Resources");
         }
 
+        [MenuItem("Assets/Setup WRLD Resources For/WebGL")]
+        public static void CopyResourcesWebGL()
+        {
+            UpdateAssets(WebGLResourcesSrcDirectory, WebGLResourcesDestDirectory);
+        }
+
         public static void OnWillPlayInEditor()
         {
             PrepareForPlatform(Application.platform);
@@ -209,6 +220,9 @@ namespace Wrld.Editor
                     break;
                 case RuntimePlatform.IPhonePlayer:
                     CopyResourcesiOS();
+                    break;
+                case RuntimePlatform.WebGLPlayer:
+                    CopyResourcesWebGL();
                     break;
                 default:
                     Debug.LogErrorFormat("Unsupported platform {0:G}", platform);

@@ -141,12 +141,18 @@ MonoBehaviour:
   m_coordSystem: 1
   m_streamingLodBasedOnDistance: 0
   m_materialDirectory: WrldMaterials/
+  m_indoorMapMaterialDirectory: WrldMaterials/Archetypes
   m_overrideLandmarkMaterial: {fileID: 0}
   m_useBuiltInCameraControls: 1
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
+  m_enableIndoorEntryMarkerEvents: 1
+  m_labelCanvas: {fileID: 0}
+  m_uploadMeshes: 0
 --- !u!1 &894688484
 GameObject:
   m_ObjectHideFlags: 0

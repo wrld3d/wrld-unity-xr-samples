@@ -130,11 +130,6 @@ namespace Wrld
             m_implementation.SetEnabled(enabled);
         }
 
-        internal void ResetRootChilds()
-        {
-            m_implementation.ResetRootChilds();
-        }
-
         /// <summary>
         /// Uninitializes the API instance. This frees up any resources allocated by the plugins including all streamed meshes in the scene. Preferably, this should be called from within the OnApplicationQuit() method.
         /// </summary>

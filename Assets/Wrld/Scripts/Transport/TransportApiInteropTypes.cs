@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Wrld.Common.Maths;
+using Wrld.Space;
 
 namespace Wrld.Transport
 {
@@ -9,11 +10,14 @@ namespace Wrld.Transport
     {
         public double InputLatitudeDegrees;
         public double InputLongitudeDegrees;
+        public double AltitudeInMeters;
+        public ElevationMode ElevationMode;
         [MarshalAs(UnmanagedType.I1)]
         public bool HasHeading;
         public double InputHeadingDegrees;
         public double MaxDistanceToMatchedPointMeters;
         public double MaxHeadingDeviationToMatchedPointDegrees;
+        public double MaxDistanceForPossibleHeadingMatch;
         public TransportNetworkType TransportNetworkType;
     };
 

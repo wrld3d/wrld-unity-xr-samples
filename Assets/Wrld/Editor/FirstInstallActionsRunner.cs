@@ -91,6 +91,8 @@ namespace Wrld.Editor
                     AssetDatabase.Refresh();
                 }
             }
+
+            PlayerSettings.WebGL.emscriptenArgs = "-s USE_ZLIB=1";
         }
 
         private static BuildTarget m_desiredBuildTarget;

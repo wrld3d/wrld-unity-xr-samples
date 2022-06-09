@@ -69,6 +69,7 @@ namespace Wrld.Space
 
         bool m_hasEverBeenRegistered = false;
         GameObject m_geolocatedParent;
+        ChildRestorer m_originalParentRestorer;
 
         void RegisterSelf()
         {
@@ -123,6 +124,9 @@ namespace Wrld.Space
             if (m_geolocatedParent == null)
             {
                 m_geolocatedParent = new GameObject("Geolocator");
+                m_originalParentRestorer = transform.parent.gameObject.GetComponent<ChildRestorer>();
+                if (m_originalParentRestorer == null)
+                    m_originalParentRestorer = transform.parent.gameObject.AddComponent<ChildRestorer>();
                 m_geolocatedParent.transform.SetParent(transform.parent, false);
                 transform.SetParent(m_geolocatedParent.transform, false);
             }
@@ -132,6 +136,8 @@ namespace Wrld.Space
         {
             if (m_geolocatedParent != null)
             {
+                if (m_originalParentRestorer != null)
+                    m_originalParentRestorer.RestoreChild(transform);
                 Destroy(m_geolocatedParent);
                 m_geolocatedParent = null;
             }
