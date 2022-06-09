@@ -105,12 +105,12 @@ namespace Wrld
         public Material OverrideLandmarkMaterial;
 
         /// <summary>
-        /// The override URL pointing to a valid coverage tree binary file.
+        /// The override URL pointing to a valid coverage tree binary file.  By default, the map will load the latest public manifest which is updated regularly.
         /// </summary>
         public string CoverageTreeManifestUrl;
 
         /// <summary>
-        /// The override URL pointing to a valid manifest with theme information, also a binary file.
+        /// The override URL pointing to a valid manifest with theme information, also a binary file.  By default, the map will load the latest themes manifest which is updated regularly.
         /// </summary>
         public string ThemeManifestUrl;
 

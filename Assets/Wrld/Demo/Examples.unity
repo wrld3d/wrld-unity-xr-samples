@@ -499,6 +499,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -587,6 +589,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -709,6 +713,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -846,6 +852,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -1063,6 +1071,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -1457,6 +1467,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -1829,6 +1841,8 @@ MonoBehaviour:
   m_terrainCollisions: 1
   m_roadCollisions: 1
   m_buildingCollisions: 1
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -2016,6 +2030,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -2650,6 +2666,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -3137,6 +3155,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -4184,6 +4204,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -4415,6 +4437,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -4854,6 +4878,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -4929,6 +4955,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 1
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 970889333}
@@ -5492,6 +5520,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -6253,6 +6283,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -7519,6 +7551,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -7624,6 +7658,8 @@ MonoBehaviour:
   m_terrainCollisions: 1
   m_roadCollisions: 1
   m_buildingCollisions: 1
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -7964,6 +8000,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -8065,6 +8103,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -8142,6 +8182,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -8802,6 +8844,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -8978,6 +9022,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -9145,6 +9191,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -9235,6 +9283,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -9665,6 +9715,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -9742,6 +9794,8 @@ MonoBehaviour:
   m_terrainCollisions: 1
   m_roadCollisions: 1
   m_buildingCollisions: 1
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -9830,6 +9884,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -10140,6 +10196,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -10209,13 +10267,15 @@ MonoBehaviour:
   m_headingDegrees: 0
   m_coordSystem: 0
   m_streamingLodBasedOnDistance: 0
-  m_materialDirectory: 
+  m_materialDirectory: CustomMaterials
   m_indoorMapMaterialDirectory: WrldMaterials/Archetypes
   m_overrideLandmarkMaterial: {fileID: 0}
   m_useBuiltInCameraControls: 1
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -10417,6 +10477,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -10792,6 +10854,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -11088,6 +11152,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -11919,6 +11985,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -12201,6 +12269,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}
@@ -13687,6 +13757,8 @@ MonoBehaviour:
   m_terrainCollisions: 0
   m_roadCollisions: 0
   m_buildingCollisions: 0
+  m_coverageTreeManifestUrl: 
+  m_themeManifestUrl: 
   m_enableLabels: 0
   m_enableIndoorEntryMarkerEvents: 1
   m_labelCanvas: {fileID: 0}

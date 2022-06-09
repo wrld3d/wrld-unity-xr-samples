@@ -19,7 +19,7 @@ namespace Wrld
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
         public const string DLL = "wrld-unity-android";
-#elif UNITY_IOS && !UNITY_EDITOR
+#elif (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         public const string DLL = "__Internal";
 #else
         public const string DLL = "StreamAlpha";
@@ -33,7 +33,7 @@ namespace Wrld
             [MarshalAs(UnmanagedType.LPStr)]string apiKey,
             [MarshalAs(UnmanagedType.LPArray)]byte[] assetPath,
             ref ConfigParams.NativeConfig config,
-            ref ApiCallbacks apiCallbacks,
+            IntPtr apiCallbacks,
             [MarshalAs(UnmanagedType.LPStr)]string coverageTreeUrl,
             [MarshalAs(UnmanagedType.LPStr)]string themeUrl
             );
@@ -63,9 +63,11 @@ namespace Wrld
 
         private bool m_isRunning = false;
 
+        private IntPtr apiCallbacksPtr = IntPtr.Zero;
+
         private static string GetStreamingAssetsDir()
         {
-#if UNITY_EDITOR_OSX || UNITY_EDITOR_WIN || UNITY_STANDALONE
+#if UNITY_EDITOR_OSX || UNITY_EDITOR_WIN || UNITY_STANDALONE || UNITY_WEBGL
             var path = Application.streamingAssetsPath + "/WrldResources";
 #elif UNITY_IOS
             var path = "Data/Raw/WrldResources/";
@@ -123,12 +125,14 @@ namespace Wrld
                 indoorMapEntityInformationApiInternal.GetHandle(),
                 apiHandle
                 );
+            apiCallbacksPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(ApiCallbacks)));
+            Marshal.StructureToPtr(apiCallbacks, apiCallbacksPtr, false);
 
             Initialize(Screen.width, Screen.height, Screen.dpi,
                 apiKey,
                 pathBytes,
                 ref nativeConfig,
-                ref apiCallbacks,
+                apiCallbacksPtr,
                 config.CoverageTreeManifestUrl,
                 config.ThemeManifestUrl
                 );
@@ -175,6 +179,8 @@ namespace Wrld
             Destroy();
             m_threadService.Destroy();
             m_textureLoadHandler.Destroy();
+            Marshal.FreeHGlobal(apiCallbacksPtr);
+            apiCallbacksPtr = IntPtr.Zero;
         }
 
         public void OnApplicationPaused()

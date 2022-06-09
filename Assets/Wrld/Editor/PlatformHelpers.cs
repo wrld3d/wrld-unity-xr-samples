@@ -63,6 +63,7 @@ namespace Wrld.Editor
 #else
                 case BuildTarget.StandaloneOSX:
 #endif
+                case BuildTarget.WebGL:
                 case BuildTarget.StandaloneWindows64:
                     return true;
             }
@@ -157,6 +158,9 @@ namespace Wrld.Editor
                     break;
                 case BuildTarget.iOS:
                     platform = RuntimePlatform.IPhonePlayer;
+                    break;
+                case BuildTarget.WebGL:
+                    platform = RuntimePlatform.WebGLPlayer;
                     break;
                 default:
                     return false;

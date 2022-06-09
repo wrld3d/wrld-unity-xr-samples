@@ -191,6 +191,9 @@ namespace Wrld
 
             result.transform.SetParent(parentTransform, preserveWorldSpacePosition);
 
+            if (!parentTransform.gameObject.GetComponent<ChildRestorer>())
+                parentTransform.gameObject.AddComponent<ChildRestorer>();
+
             return result;
         }
 
@@ -481,20 +484,13 @@ namespace Wrld
             m_precacheApiInternal.Destroy();
             m_transportApiInternal.Destroy();
 
+            var parent = m_root.transform.parent;
+            var reAdder = parent.GetComponent<ChildRestorer>();
+            if (reAdder != null)
+                reAdder.RestoreChildren(m_root.transform);
+
             GameObject.Destroy(m_root);
             m_root = null;
-        }
-
-        public void ResetRootChilds()
-        {
-            var parent = m_root.transform.parent;
-            int childCount = m_root.transform.childCount;
-
-            for (int childIndex = childCount - 1; childIndex >= 0; --childIndex)
-            {
-                var child = m_root.transform.GetChild(childIndex);
-                child.SetParent(parent.transform, false);
-            }
         }
 
         internal Vector3 GeographicToWorldPoint(LatLongAltitude position)

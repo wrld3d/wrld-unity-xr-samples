@@ -100,10 +100,13 @@ namespace Wrld.Transport
             {
                 InputLatitudeDegrees = options.InputLatitudeDegrees,
                 InputLongitudeDegrees = options.InputLongitudeDegrees,
+                AltitudeInMeters = options.AltitudeInMeters,
+                ElevationMode = options.ElevationMode,
                 HasHeading = options.HasHeading,
                 InputHeadingDegrees = options.InputHeadingDegrees,
                 MaxDistanceToMatchedPointMeters = options.MaxDistanceToMatchedPointMeters,
                 MaxHeadingDeviationToMatchedPointDegrees = options.MaxHeadingDeviationToMatchedPointDegrees,
+                MaxDistanceForPossibleHeadingMatch = options.MaxDistanceForPossibleHeadingMatch,
                 TransportNetworkType = options.TransportNetworkType
             };
 

@@ -1,3 +1,5 @@
+using Wrld.Space;
+
 namespace Wrld.Transport
 {
     /// <summary>
@@ -7,11 +9,15 @@ namespace Wrld.Transport
     {
         private double m_latitudeDegrees;
         private double m_longitudeDegrees;
+        private double m_altitudeInMeters;
+        private ElevationMode m_elevationMode = ElevationMode.HeightAboveGround;
         private double m_headingDegrees;
         private double m_maxDistanceToMatchedPointMeters = 20.0;
         private double m_maxHeadingDeviationToMatchedPointDegrees = 30.0;
+        private double m_maxDistanceForPossibleHeadingMatch = 0.5;
         private TransportNetworkType m_transportNetworkType = TransportNetworkType.Road;
         private bool m_hasCoordinates = false;
+        private bool m_hasAltitude = false;
         private bool m_hasHeading = false;
 
         /// <summary>
@@ -37,6 +43,29 @@ namespace Wrld.Transport
         }
 
         /// <summary>
+        /// Set an optional input altitude.
+        /// </summary>
+        /// <param name="altitudeInMeters">Input altitude in meters.</param>
+        /// <returns>This object, with the input altitude set.</returns>
+        public TransportPositionerOptionsBuilder SetAltitudeInMeters(double altitudeInMeters)
+        {
+            m_altitudeInMeters = altitudeInMeters;
+            m_hasAltitude = true;
+            return this;
+        }
+
+        /// <summary>
+        /// Set an optional mode specifying how the altitude property is interpreted.
+        /// </summary>
+        /// <param name="elevationMode">Input value indicating whether altitude is specified as a height above terrain, or an absolute altitude above sea level.</param>
+        /// <returns>This object, with the input elevation mode set.</returns>
+        public TransportPositionerOptionsBuilder SetElevationMode(ElevationMode elevationMode)
+        {
+            m_elevationMode = elevationMode;
+            return this;
+        }
+
+        /// <summary>
         /// Set an optional input heading.
         /// </summary>
         /// <param name="headingDegrees">Input heading angle in degrees clockwise from North.</param>
@@ -49,8 +78,8 @@ namespace Wrld.Transport
         }
 
         /// <summary>
-        /// Set a constraint threshold for the maximum allowed difference between InputHeadingDegrees and 
-        /// the tangential direction of a candidate on a TransportDirectedEdge, in degrees.
+        /// Set a constraint threshold for the maximum allowed distance between the input coordinates and a candidate point
+        /// on a TransportDirectedEdge, in meters.
         /// </summary>
         /// <param name="maxDistanceToMatchedPointMeters">The constraint distance, in meters.</param>
         /// <returns>This object, with the distance constraint set.</returns>
@@ -61,14 +90,28 @@ namespace Wrld.Transport
         }
 
         /// <summary>
-        /// Set a constraint threshold for the maximum allowed distance between the input coordinates and a candidate point 
-        /// on a TransportDirectedEdge, in meters.
+        /// Set a constraint threshold for the maximum allowed difference between InputHeadingDegrees and
+        /// the tangential direction of a candidate on a TransportDirectedEdge, in degrees.
         /// </summary>
         /// <param name="maxHeadingDeviationToMatchedPointDegrees">The constraint angle, in degrees.</param>
         /// <returns>This object, with the heading angle constraint set.</returns></returns>
         public TransportPositionerOptionsBuilder SetMaxHeadingDeviationToMatchedPoint(double maxHeadingDeviationToMatchedPointDegrees)
         {
             m_maxHeadingDeviationToMatchedPointDegrees = maxHeadingDeviationToMatchedPointDegrees;
+            return this;
+        }
+
+
+
+        /// <summary>
+        /// Set a constraint threshold for the maximum allowed distance between which the provided heading can match
+        /// on a TransportDirectedEdge, in meters.
+        /// </summary>
+        /// <param name="maxDistanceForPossibleHeadingMatch">The constraint distance, in meters.</param>
+        /// <returns>This object, with the heading distance constraint set.</returns></returns>
+        public TransportPositionerOptionsBuilder SetMaxDistanceForPossibleHeadingMatch(double maxDistanceForPossibleHeadingMatch)
+        {
+            m_maxDistanceForPossibleHeadingMatch = maxDistanceForPossibleHeadingMatch;
             return this;
         }
 
@@ -96,10 +139,14 @@ namespace Wrld.Transport
             return new TransportPositionerOptions(
                 m_latitudeDegrees,
                 m_longitudeDegrees,
+                m_hasAltitude,
+                m_altitudeInMeters,
+                m_elevationMode,
                 m_hasHeading,
                 m_headingDegrees,
                 m_maxDistanceToMatchedPointMeters,
                 m_maxHeadingDeviationToMatchedPointDegrees,
+                m_maxDistanceForPossibleHeadingMatch,
                 m_transportNetworkType);
         }
     }

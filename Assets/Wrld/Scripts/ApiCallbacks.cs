@@ -462,6 +462,11 @@ namespace Wrld
             transportCallbacks = TransportCallbacks.Create(transportApiHandle);
             indoorMapEntityInformationCallbacks = IndoorMapEntityInformationCallbacks.Create(indoorEntityInformationApiInternalHandle);
             streamingCallbacks = StreamingCallbacks.Create(mapApiInternalHandle);
+#if UNITY_WEBGL
+            loadResourceCallback = UnityResourcesWrapper.LoadResource;
+            freeResourceBufferCallback = UnityResourcesWrapper.FreeResourceBuffer;
+            resourceExistsCallback = UnityResourcesWrapper.ResourceExists;
+#endif
         }
 
         MeshCallbacks meshCallbacks;
@@ -479,6 +484,11 @@ namespace Wrld
         TransportCallbacks transportCallbacks;
         IndoorMapEntityInformationCallbacks indoorMapEntityInformationCallbacks;
         StreamingCallbacks streamingCallbacks;
+#if UNITY_WEBGL
+        UnityResourcesWrapper.UnityResourcesWrapperLoadResourceCallback loadResourceCallback;
+        UnityResourcesWrapper.UnityResourcesWrapperFreeResourceBufferCallback freeResourceBufferCallback;
+        UnityResourcesWrapper.UnityResourcesWrapperResourceExistsCallback resourceExistsCallback;
+#endif
     }
 }
 

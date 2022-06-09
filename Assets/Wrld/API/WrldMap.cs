@@ -10,96 +10,105 @@ public class WrldMap : MonoBehaviour
     [Header("Camera/View Settings")]
     [Tooltip("Camera used to request streamed resources")]
     [SerializeField]
-    private Camera m_streamingCamera = null;
+    protected Camera m_streamingCamera = null;
 
     [Header("Setup")]
     [SerializeField]
-    private string m_apiKey;
+    protected string m_apiKey;
 
     [Tooltip("In degrees")]
     [Range(-90.0f, 90.0f)]
     [SerializeField]
-    private double m_latitudeDegrees = 37.771092;
+    protected double m_latitudeDegrees = 37.771092;
 
     [Tooltip("In degrees")]
     [Range(-180.0f, 180.0f)]
     [SerializeField]
-    private double m_longitudeDegrees = -122.468385;
+    protected double m_longitudeDegrees = -122.468385;
 
     [Tooltip("The distance of the camera from the interest point (meters)")]
     [SerializeField]
     [Range(300.0f, 7000000.0f)]
-    private double m_distanceToInterest = 1781.0;
+    protected double m_distanceToInterest = 1781.0;
 
     [Tooltip("Direction you are facing")]
     [SerializeField]
     [Range(0, 360.0f)]
-    private double m_headingDegrees = 0.0;
+    protected double m_headingDegrees = 0.0;
 
     [Header("Map Behaviour Settings")]
     [Tooltip("Coordinate System to be used. ECEF requires additional calculation and setup")]
     [SerializeField]
-    private CoordinateSystem m_coordSystem = CoordinateSystem.UnityWorld;
+    protected CoordinateSystem m_coordSystem = CoordinateSystem.UnityWorld;
 
     [Tooltip("Whether to determine streaming LOD based on distance, instead of altitude")]
     [SerializeField]
-    private bool m_streamingLodBasedOnDistance = false;
+    protected bool m_streamingLodBasedOnDistance = false;
 
     [Header("Theme Settings")]
     [Tooltip("Directory within the Resources folder to look for materials during runtime. Default is provided with the package")]
     [SerializeField]
-    private string m_materialDirectory = "WrldMaterials/";
+    protected string m_materialDirectory = "WrldMaterials/";
 
     [Tooltip("Directory within the Resources folder to look for interior materials during runtime. Default is provided with the package")]
     [SerializeField]
-    private string m_indoorMapMaterialDirectory = "WrldMaterials/Archetypes";
+    protected string m_indoorMapMaterialDirectory = "WrldMaterials/Archetypes";
 
     [Tooltip("The material to override all landmarks with. Uses standard diffuse if null.")]
     [SerializeField]
-    private Material m_overrideLandmarkMaterial = null;
+    protected Material m_overrideLandmarkMaterial = null;
 
     [Tooltip("Set to true to use the default mouse & keyboard/touch controls, false if controlling the camera by some other means.")]
     [SerializeField]
-    private bool m_useBuiltInCameraControls = true;
+    protected bool m_useBuiltInCameraControls = true;
 
     [Header("Collision Settings")]
     [Tooltip("Set to true for Terrain collisions")]
     [SerializeField]
-    private bool m_terrainCollisions = false;
+    protected bool m_terrainCollisions = false;
 
     [Tooltip("Set to true for Road collision")]
     [SerializeField]
-    private bool m_roadCollisions = false;
+    protected bool m_roadCollisions = false;
 
     [Tooltip("Set to true for Building collision")]
     [SerializeField]
-    private bool m_buildingCollisions = false;
+    protected bool m_buildingCollisions = false;
+
+    [Header("Manifest Settings")]
+    [Tooltip("The override URL pointing to a valid coverage tree binary file. Leave empty to use the default.")]
+    [SerializeField]
+    protected string m_coverageTreeManifestUrl = "";
+
+    [Tooltip("The override URL pointing to a valid manifest with theme information, also a binary file. Leave empty to use the default.")]
+    [SerializeField]
+    protected string m_themeManifestUrl = "";
 
     [Header("Label Settings")]
     [Tooltip("Set to true to display text labels for road names, buildings, and other landmarks.")]
     [SerializeField]
-    private bool m_enableLabels = false;
+    protected bool m_enableLabels = false;
 
     [Tooltip("Set to true to allow the user to tap or click on an Interior Entry Marker to enter its associated Indoor Map.")]
     [SerializeField]
-    private bool m_enableIndoorEntryMarkerEvents = true;
+    protected bool m_enableIndoorEntryMarkerEvents = true;
 
     [Tooltip("Provide a Unity UI Canvas object for text labels to be drawn upon. If this is blank, a new canvas will be instantiated instead.")]
     [SerializeField]
-    private GameObject m_labelCanvas = null;
+    protected GameObject m_labelCanvas = null;
 
     [Tooltip("Set to false if you require read/write access to the meshes")]
     [SerializeField]
-    private bool m_uploadMeshes = false;
+    protected bool m_uploadMeshes = false;
 
-    private Api m_api;
-    private bool m_isExitingApp = false;
-    void Awake()
+    protected Api m_api;
+
+    protected internal void Awake()
     {
         SetupApi();
     }
 
-    void OnEnable()
+    protected internal void OnEnable()
     {
         if (Api.Instance == null)
         {
@@ -107,20 +116,14 @@ public class WrldMap : MonoBehaviour
         }
 
         m_api.SetEnabled(true);
-#if UNITY_EDITOR
-        EditorApplication.playModeStateChanged += EditorPlayModeChanged;
-#endif
     }
 
-    void OnDisable()
+    protected internal void OnDisable()
     {
         m_api.SetEnabled(false);
-#if UNITY_EDITOR
-        EditorApplication.playModeStateChanged -= EditorPlayModeChanged;
-#endif
     }
 
-    string GetApiKey()
+    protected internal string GetApiKey()
     {
         if (APIKeyHelpers.AppearsValid(m_apiKey))
         {
@@ -139,7 +142,7 @@ public class WrldMap : MonoBehaviour
         return m_apiKey;
     }
 
-    void SetupApi()
+    protected internal void SetupApi()
     {
         var config = ConfigParams.MakeDefaultConfig();
         config.DistanceToInterest = m_distanceToInterest;
@@ -153,6 +156,8 @@ public class WrldMap : MonoBehaviour
         config.Collisions.TerrainCollision = m_terrainCollisions;
         config.Collisions.RoadCollision = m_roadCollisions;
         config.Collisions.BuildingCollision = m_buildingCollisions;
+        config.CoverageTreeManifestUrl = m_coverageTreeManifestUrl;
+        config.ThemeManifestUrl = m_themeManifestUrl;
         config.EnableLabels = m_enableLabels;
         config.EnableIndoorEntryMarkerEvents = m_enableIndoorEntryMarkerEvents;
         config.LabelCanvas = m_labelCanvas;
@@ -186,7 +191,7 @@ public class WrldMap : MonoBehaviour
         m_api.CameraApi.IsCameraDrivenFromInput = m_useBuiltInCameraControls;
     }
 
-    void LateUpdate()
+    protected internal void LateUpdate()
     {
         if (m_useBuiltInCameraControls && (m_streamingCamera == m_api.CameraApi.GetControlledCamera()))
         {
@@ -200,57 +205,39 @@ public class WrldMap : MonoBehaviour
         m_api.Update();
     }
 
-    internal void OnDestroy()
+    protected internal void OnDestroy()
     {
         if (m_api != null)
         {
-            if (!m_isExitingApp)
-            {
-                m_api.ResetRootChilds();
-            }
             m_api.Destroy();
             m_api = null;
         }
     }
 
-    void OnApplicationPause(bool isPaused)
+    protected internal void OnValidate()
+    {
+        GetApiKey();
+    }
+
+    protected internal void OnApplicationPause(bool isPaused)
     {
         SetApplicationPaused(isPaused);
     }
 
-    void OnApplicationFocus(bool hasFocus)
+    protected internal void OnApplicationFocus(bool hasFocus)
     {
         SetApplicationPaused(!hasFocus);
     }
 
-    void SetApplicationPaused(bool isPaused)
+    protected internal void SetApplicationPaused(bool isPaused)
     {
         if (isPaused)
         {
-            m_api.OnApplicationPaused();
+            m_api?.OnApplicationPaused();
         }
         else
         {
-            m_api.OnApplicationResumed();
+            m_api?.OnApplicationResumed();
         }
     }
-
-#if !UNITY_EDITOR
-    void OnApplicationQuit()
-    {
-        m_isExitingApp = true;
-        m_api.ResetRootChilds();
-    }
-#endif
-
-#if UNITY_EDITOR
-    void EditorPlayModeChanged(PlayModeStateChange playModeState)
-    {
-        if (playModeState == PlayModeStateChange.ExitingPlayMode)
-        {
-            m_isExitingApp = true;
-            m_api.ResetRootChilds();
-        }
-    }
-#endif
 }
